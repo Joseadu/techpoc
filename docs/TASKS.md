@@ -27,5 +27,5 @@
   Confeccionar lógica (con Signals) en `AuthService` para leer del mock (`/users`) usando `name` local validado con password, emitiendo un estado y guardando la sesión falsa en localStorage.
 - `[x]` **TSK-203: Pantalla e Interfaz de Login** _(Estimación: 3h)_  
   Desarrollo maquetado mobile-first usando Figma y desarrollo técnico de formulario de login a partir de nuevas APIs (Signal Forms) con estado interactivo.
-- `[ ]` **TSK-204: Middleware de Seguridad (Guards/Interceptors)** _(Estimación: 1.5h)_  
+- `[x]` **TSK-204: Middleware de Seguridad (Guards/Interceptors)** _(Estimación: 1.5h)_  
   Crear un interceptor funcional que añada inhabilitación global sin sesión y un Token inventado, acompañado de Guardias para ocultar paneles internos de la App.
