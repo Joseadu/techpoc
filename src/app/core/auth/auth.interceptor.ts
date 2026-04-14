@@ -8,7 +8,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  // 1. Inyectamos el Token Bearer inventado si el usuario está logueado
+  // Token Bearer inventado si el usuario está logueado
   let clonedRequest = req;
   const user = authService.currentUser();
 
@@ -20,11 +20,11 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     });
   }
 
-  // 2. Ejecutamos la petición y capturamos posibles errores globales (como un 401: No autorizado)
+  // Petición y capturamos posibles errores globales
   return next(clonedRequest).pipe(
     catchError((error: HttpErrorResponse) => {
       if (error.status === 401) {
-        // En caso de caducar o ser inválido el token simulado, lo matamos en cliente y a login
+        // Si el token caduca o no es válido cerramos la sesión y vamos a login
         authService.logout();
         router.navigate(['/login']);
       }
