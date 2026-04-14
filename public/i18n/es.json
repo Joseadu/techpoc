@@ -1,0 +1,11 @@
+{
+  "LOGIN": {
+    "TITLE": "Iniciar Sesión",
+    "SUBMIT": "Entrar"
+  },
+  "COMMON": {
+    "LOADING": "Cargando...",
+    "ERROR": "Ha ocurrido un error inesperado.",
+    "EMPTY": "No hay datos disponibles."
+  }
+}

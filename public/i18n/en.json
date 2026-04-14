@@ -1,0 +1,11 @@
+{
+  "LOGIN": {
+    "TITLE": "Sign In",
+    "SUBMIT": "Enter"
+  },
+  "COMMON": {
+    "LOADING": "Loading...",
+    "ERROR": "An unexpected error occurred.",
+    "EMPTY": "No data available."
+  }
+}

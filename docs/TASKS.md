@@ -21,7 +21,7 @@
 
 ## Sprint 2: Core y Autenticación
 
-- `[ ]` **TSK-201: Configuración Global e Internacionalización (i18n)** _(Estimación: 1.5h)_  
+- `[x]` **TSK-201: Configuración Global e Internacionalización (i18n)** _(Estimación: 1.5h)_  
   Adecuación global habilitando `zoneless`, proveyendo `withFetch` e instalando un sistema de idiomas multi-estado (es/en) usando Transloco o NgxTranslate.
 - `[ ]` **TSK-202: Servicio de Autenticación de Negocio** _(Estimación: 2h)_  
   Confeccionar lógica (con Signals) en `AuthService` para leer del mock (`/users`) usando `name` local validado con password, emitiendo un estado y guardando la sesión falsa en localStorage.
