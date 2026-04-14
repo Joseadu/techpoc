@@ -21,7 +21,7 @@ export class Login {
   readonly isLoading = signal(false);
   readonly hasError = signal(false);
 
-  // Getter derivado para identificar el idioma actual en el template visualmente
+  // identificar el idioma actual visualmente
   get activeLang(): string {
     return this.translate.currentLang || this.translate.defaultLang || 'es';
   }

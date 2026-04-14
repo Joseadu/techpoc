@@ -2,34 +2,35 @@
   <header class="flex justify-between items-center py-4 px-4 md:py-4 md:px-6">
     <div class="text-[1.2rem] font-extrabold tracking-tight text-gray-900">TechPoc</div>
 
-    <!-- ES / EN Toggle Pill -->
+    <!-- ES / EN Toggle -->
     <div
-      class="w-[144px] h-[28px] bg-[#D9D9D9] rounded-[10px] py-[4px] px-[16px] flex items-center justify-between"
+      class="relative w-[144px] h-[28px] bg-[#D9D9D9] rounded-[10px] px-[16px] flex items-center"
     >
-      <button
-        type="button"
-        (click)="setLanguage('es')"
-        [ngClass]="
-          activeLang === 'es'
-            ? 'bg-[#2A6BF3] text-white shadow-sm'
-            : 'text-[#6B7280] hover:text-gray-900 bg-transparent'
-        "
-        class="w-[45px] h-[19px] flex items-center justify-center rounded-[10px] text-[10px] font-medium transition-all cursor-pointer"
-      >
-        ES
-      </button>
-      <button
-        type="button"
-        (click)="setLanguage('en')"
-        [ngClass]="
-          activeLang === 'en'
-            ? 'bg-[#2A6BF3] text-white shadow-sm'
-            : 'text-[#6B7280] hover:text-gray-900 bg-transparent'
-        "
-        class="w-[45px] h-[19px] flex items-center justify-center rounded-[10px] text-[10px] font-medium transition-all cursor-pointer"
-      >
-        EN
-      </button>
+      <!-- Caja deslizante azul -->
+      <div
+        class="absolute left-[16px] top-1/2 -translate-y-1/2 w-[45px] h-[19px] bg-[#2A6BF3] rounded-[10px] shadow-sm transition-transform duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+        [ngClass]="activeLang === 'es' ? 'translate-x-0' : 'translate-x-[67px]'"
+      ></div>
+
+      <!-- Letras Interactivas encima del carril continuo -->
+      <div class="relative z-10 w-full flex justify-between items-center">
+        <button
+          type="button"
+          (click)="setLanguage('es')"
+          [ngClass]="activeLang === 'es' ? 'text-white' : 'text-[#6B7280] hover:text-gray-900'"
+          class="w-[45px] h-[19px] flex items-center justify-center rounded-[10px] text-[10px] font-medium transition-colors duration-300 cursor-pointer focus:outline-none"
+        >
+          ES
+        </button>
+        <button
+          type="button"
+          (click)="setLanguage('en')"
+          [ngClass]="activeLang === 'en' ? 'text-white' : 'text-[#6B7280] hover:text-gray-900'"
+          class="w-[45px] h-[19px] flex items-center justify-center rounded-[10px] text-[10px] font-medium transition-colors duration-300 cursor-pointer focus:outline-none"
+        >
+          EN
+        </button>
+      </div>
     </div>
   </header>
 
@@ -43,7 +44,7 @@
       <p class="text-[#6B7280] font-medium text-[15px]">{{ 'LOGIN.VIEW_SUBTITLE' | translate }}</p>
     </div>
 
-    <!-- TARJETA BLANCA -->
+    <!-- TARJETA FORMULARIO -->
     <div
       class="w-full max-w-[380px] bg-white rounded-lg shadow-[0_10px_40px_rgba(42,52,57,0.04)] border border-[#A9B4B9]/10 p-6 md:p-8"
     >
@@ -85,7 +86,7 @@
               [ngModel]="username()"
               (ngModelChange)="username.set($event)"
               required
-              class="w-full bg-[#D9E4EA]/30 border border-[#A9B4B9]/15 text-[#111827] rounded-lg pl-10 pr-10 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#0053DC]/70 focus:border-[#0053DC] transition-all placeholder:text-[#9CA3AF] text-sm font-medium"
+              class="w-full bg-[#D9E4EA]/30 border border-[#A9B4B9]/15 text-[#111827] rounded-lg pl-10 pr-10 py-3.5 focus:outline-none focus:ring-1 focus:ring-[#0053DC]/70 focus:border-[#0053DC] transition-all placeholder:text-[#9CA3AF] text-md font-medium"
             />
             @if (username()) {
               <button
@@ -135,7 +136,7 @@
               [ngModel]="password()"
               (ngModelChange)="password.set($event)"
               required
-              class="w-full bg-[#D9E4EA]/30 border border-[#A9B4B9]/15 text-[#111827] rounded-lg pl-10 pr-10 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#0053DC]/70 focus:border-[#0053DC] transition-all placeholder:text-[#9CA3AF] text-lg font-bold tracking-[0.2em]"
+              class="w-full bg-[#D9E4EA]/30 border border-[#A9B4B9]/15 text-[#111827] rounded-lg pl-10 pr-10 py-2.5 focus:outline-none focus:ring-1 focus:ring-[#0053DC]/70 focus:border-[#0053DC] transition-all placeholder:text-[#9CA3AF] text-md font-bold tracking-[0.2em]"
             />
             @if (password()) {
               <button
@@ -156,7 +157,7 @@
           </div>
         </div>
 
-        <!-- Botón -->
+        <!-- Botón submit -->
         <button
           type="submit"
           [disabled]="isLoading() || !username() || !password()"
@@ -165,7 +166,7 @@
               ? 'bg-[#F3F4F6] text-[#9CA3AF] cursor-default'
               : 'bg-[linear-gradient(135deg,#0053DC_0%,#3E76FE_100%)] text-white hover:brightness-110 shadow-[0_4px_15px_rgba(0,83,220,0.2)] active:scale-[0.98] cursor-pointer'
           "
-          class="w-full mt-4 text-[15px] p-[1px] font-semibold flex items-center justify-center gap-1.5 py-3 rounded-lg transition-all"
+          class="group w-full mt-4 text-[15px] p-[1px] font-semibold flex items-center justify-center gap-1.5 py-4 rounded-lg transition-all"
         >
           @if (isLoading()) {
             <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
@@ -187,7 +188,7 @@
           } @else {
             <span>{{ 'LOGIN.SUBMIT' | translate }}</span>
             <svg
-              class="w-[18px] h-[18px] ml-0.5"
+              class="w-[18px] h-[18px] ml-0.5 transition-transform duration-[250ms] ease-out group-hover:translate-x-1.5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
