@@ -13,7 +13,6 @@ export class App {
   private translate = inject(TranslateService);
 
   constructor() {
-    // Configuración troncal para toda la aplicación desde el segundo cero
     this.translate.setDefaultLang('es');
     this.translate.use('es');
   }
