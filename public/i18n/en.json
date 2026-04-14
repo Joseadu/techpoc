@@ -1,7 +1,13 @@
 {
   "LOGIN": {
-    "TITLE": "Sign In",
-    "SUBMIT": "Enter"
+    "VIEW_TITLE": "Welcome",
+    "VIEW_SUBTITLE": "Please enter your credentials",
+    "USERNAME": "Username",
+    "USERNAME_PLACEHOLDER": "Username",
+    "PASSWORD": "Password",
+    "SUBMIT": "Sign In",
+    "LOADING": "Verifying...",
+    "ERROR": "Invalid credentials"
   },
   "COMMON": {
     "LOADING": "Loading...",

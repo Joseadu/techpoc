@@ -1,7 +1,13 @@
 {
   "LOGIN": {
-    "TITLE": "Iniciar Sesión",
-    "SUBMIT": "Entrar"
+    "VIEW_TITLE": "Bienvenido",
+    "VIEW_SUBTITLE": "Introduce tus credenciales",
+    "USERNAME": "Usuario",
+    "USERNAME_PLACEHOLDER": "Usuario",
+    "PASSWORD": "Contraseña",
+    "SUBMIT": "Acceder",
+    "LOADING": "Verificando...",
+    "ERROR": "Usuario o contraseña incorrectos"
   },
   "COMMON": {
     "LOADING": "Cargando...",

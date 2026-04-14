@@ -1,1 +1,207 @@
-<p>login works!</p>
+<div class="min-h-screen bg-[#F7F9FB] flex flex-col font-['Inter']">
+  <header class="flex justify-between items-center py-4 px-4 md:py-4 md:px-6">
+    <div class="text-[1.2rem] font-extrabold tracking-tight text-gray-900">TechPoc</div>
+
+    <!-- ES / EN Toggle Pill -->
+    <div
+      class="w-[144px] h-[28px] bg-[#D9D9D9] rounded-[10px] py-[4px] px-[16px] flex items-center justify-between"
+    >
+      <button
+        type="button"
+        (click)="setLanguage('es')"
+        [ngClass]="
+          activeLang === 'es'
+            ? 'bg-[#2A6BF3] text-white shadow-sm'
+            : 'text-[#6B7280] hover:text-gray-900 bg-transparent'
+        "
+        class="w-[45px] h-[19px] flex items-center justify-center rounded-[10px] text-[10px] font-medium transition-all cursor-pointer"
+      >
+        ES
+      </button>
+      <button
+        type="button"
+        (click)="setLanguage('en')"
+        [ngClass]="
+          activeLang === 'en'
+            ? 'bg-[#2A6BF3] text-white shadow-sm'
+            : 'text-[#6B7280] hover:text-gray-900 bg-transparent'
+        "
+        class="w-[45px] h-[19px] flex items-center justify-center rounded-[10px] text-[10px] font-medium transition-all cursor-pointer"
+      >
+        EN
+      </button>
+    </div>
+  </header>
+
+  <main class="flex-grow flex flex-col items-center justify-center px-4 pb-20">
+    <div class="text-center mb-8">
+      <h1
+        class="text-[2rem] md:text-[2.5rem] font-extrabold text-[#111827] tracking-[-0.02em] mb-2 leading-tight"
+      >
+        {{ 'LOGIN.VIEW_TITLE' | translate }}
+      </h1>
+      <p class="text-[#6B7280] font-medium text-[15px]">{{ 'LOGIN.VIEW_SUBTITLE' | translate }}</p>
+    </div>
+
+    <!-- TARJETA BLANCA -->
+    <div
+      class="w-full max-w-[380px] bg-white rounded-lg shadow-[0_10px_40px_rgba(42,52,57,0.04)] border border-[#A9B4B9]/10 p-6 md:p-8"
+    >
+      @if (hasError()) {
+        <div class="mb-5 p-3 rounded-md bg-red-50 border border-red-200 flex items-center gap-2">
+          <p class="text-red-500 text-xs font-semibold tracking-wider">
+            {{ 'LOGIN.ERROR' | translate }}
+          </p>
+        </div>
+      }
+
+      <form (submit)="onSubmit($event)" class="space-y-4 cursor-default">
+        <!-- Usuario -->
+        <div class="space-y-1.5">
+          <label
+            for="username"
+            class="block text-[10px] font-extrabold text-[#6B7280] tracking-widest uppercase"
+            >{{ 'LOGIN.USERNAME' | translate }}</label
+          >
+          <div class="relative flex items-center">
+            <svg
+              class="w-[18px] h-[18px] text-[#9CA3AF] absolute left-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+              ></path>
+            </svg>
+            <input
+              id="username"
+              type="text"
+              [placeholder]="'LOGIN.USERNAME_PLACEHOLDER' | translate"
+              name="username"
+              [ngModel]="username()"
+              (ngModelChange)="username.set($event)"
+              required
+              class="w-full bg-[#D9E4EA]/30 border border-[#A9B4B9]/15 text-[#111827] rounded-lg pl-10 pr-10 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#0053DC]/70 focus:border-[#0053DC] transition-all placeholder:text-[#9CA3AF] text-sm font-medium"
+            />
+            @if (username()) {
+              <button
+                type="button"
+                (click)="username.set('')"
+                class="absolute right-3 text-[#9CA3AF] hover:text-[#4B5563] transition-colors focus:outline-none cursor-pointer"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  ></path>
+                </svg>
+              </button>
+            }
+          </div>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="space-y-1.5">
+          <label
+            for="password"
+            class="block text-[10px] font-extrabold text-[#6B7280] tracking-widest uppercase"
+            >{{ 'LOGIN.PASSWORD' | translate }}</label
+          >
+          <div class="relative flex items-center">
+            <svg
+              class="w-[18px] h-[18px] text-[#9CA3AF] absolute left-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.3"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              ></path>
+            </svg>
+            <input
+              id="password"
+              type="password"
+              placeholder="••••••••"
+              name="password"
+              [ngModel]="password()"
+              (ngModelChange)="password.set($event)"
+              required
+              class="w-full bg-[#D9E4EA]/30 border border-[#A9B4B9]/15 text-[#111827] rounded-lg pl-10 pr-10 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#0053DC]/70 focus:border-[#0053DC] transition-all placeholder:text-[#9CA3AF] text-lg font-bold tracking-[0.2em]"
+            />
+            @if (password()) {
+              <button
+                type="button"
+                (click)="password.set('')"
+                class="absolute right-3 text-[#9CA3AF] hover:text-[#4B5563] transition-colors focus:outline-none cursor-pointer"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  ></path>
+                </svg>
+              </button>
+            }
+          </div>
+        </div>
+
+        <!-- Botón -->
+        <button
+          type="submit"
+          [disabled]="isLoading() || !username() || !password()"
+          [ngClass]="
+            isLoading() || !username() || !password()
+              ? 'bg-[#F3F4F6] text-[#9CA3AF] cursor-default'
+              : 'bg-[linear-gradient(135deg,#0053DC_0%,#3E76FE_100%)] text-white hover:brightness-110 shadow-[0_4px_15px_rgba(0,83,220,0.2)] active:scale-[0.98] cursor-pointer'
+          "
+          class="w-full mt-4 text-[15px] p-[1px] font-semibold flex items-center justify-center gap-1.5 py-3 rounded-lg transition-all"
+        >
+          @if (isLoading()) {
+            <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              ></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            <span>{{ 'LOGIN.LOADING' | translate }}</span>
+          } @else {
+            <span>{{ 'LOGIN.SUBMIT' | translate }}</span>
+            <svg
+              class="w-[18px] h-[18px] ml-0.5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              ></path>
+            </svg>
+          }
+        </button>
+      </form>
+    </div>
+  </main>
+</div>
