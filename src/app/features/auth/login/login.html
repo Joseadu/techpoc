@@ -46,7 +46,7 @@
 
     <!-- TARJETA FORMULARIO -->
     <div
-      class="w-full max-w-[380px] bg-white rounded-lg shadow-[0_10px_40px_rgba(42,52,57,0.04)] border border-[#A9B4B9]/10 p-6 md:p-8"
+      class="w-full max-w-[400px] bg-white rounded-lg shadow-[0_10px_40px_rgba(42,52,57,0.04)] border border-[#A9B4B9]/10 p-6 md:p-8"
     >
       @if (hasError()) {
         <div class="mb-5 p-3 rounded-md bg-red-50 border border-red-200 flex items-center gap-2">
@@ -86,7 +86,7 @@
               [ngModel]="username()"
               (ngModelChange)="username.set($event)"
               required
-              class="w-full bg-[#D9E4EA]/30 border border-[#A9B4B9]/15 text-[#111827] rounded-lg pl-10 pr-10 py-3.5 focus:outline-none focus:ring-1 focus:ring-[#0053DC]/70 focus:border-[#0053DC] transition-all placeholder:text-[#9CA3AF] text-md font-medium"
+              class="w-full bg-[#D9E4EA]/30 border border-[#A9B4B9]/15 text-[#111827] rounded-lg pl-10 pr-10 py-2.5 md:py-3.5 focus:outline-none focus:ring-1 focus:ring-[#0053DC]/70 focus:border-[#0053DC] transition-all placeholder:text-[#9CA3AF] text-sm md:text-base font-medium"
             />
             @if (username()) {
               <button
@@ -136,7 +136,7 @@
               [ngModel]="password()"
               (ngModelChange)="password.set($event)"
               required
-              class="w-full bg-[#D9E4EA]/30 border border-[#A9B4B9]/15 text-[#111827] rounded-lg pl-10 pr-10 py-2.5 focus:outline-none focus:ring-1 focus:ring-[#0053DC]/70 focus:border-[#0053DC] transition-all placeholder:text-[#9CA3AF] text-md font-bold tracking-[0.2em]"
+              class="w-full bg-[#D9E4EA]/30 border border-[#A9B4B9]/15 text-[#111827] rounded-lg pl-10 pr-10 py-2.5 md:py-3.5 focus:outline-none focus:ring-1 focus:ring-[#0053DC]/70 focus:border-[#0053DC] transition-all placeholder:text-[#9CA3AF] text-base md:text-base font-bold tracking-[0.2em]"
             />
             @if (password()) {
               <button
@@ -166,7 +166,7 @@
               ? 'bg-[#F3F4F6] text-[#9CA3AF] cursor-default'
               : 'bg-[linear-gradient(135deg,#0053DC_0%,#3E76FE_100%)] text-white hover:brightness-110 shadow-[0_4px_15px_rgba(0,83,220,0.2)] active:scale-[0.98] cursor-pointer'
           "
-          class="group w-full mt-4 text-[15px] p-[1px] font-semibold flex items-center justify-center gap-1.5 py-4 rounded-lg transition-all"
+          class="group w-full mt-4 text-[15px] md:text-base p-[1px] font-semibold flex items-center justify-center gap-1.5 py-3 md:py-4 rounded-lg transition-all"
         >
           @if (isLoading()) {
             <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
