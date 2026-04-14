@@ -17,7 +17,6 @@ export interface User {
 export class AuthService {
   private http = inject(HttpClient);
 
-  // Estado reactivo y atómico usando Signals
   public readonly currentUser = signal<User | null>(null);
 
   constructor() {
